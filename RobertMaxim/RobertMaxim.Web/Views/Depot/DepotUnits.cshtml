@@ -1,0 +1,37 @@
+﻿@model List<RobertMaxim.DataModel.DepotData>
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="drug-unit-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Depot Name</th>
+                    <th>Drug Type</th>
+                    <th>Drug ID</th>
+                    <th>Pick Number</th>
+                    <th>Provenience</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var depot in Model)
+                {
+                    <tr>
+                        <td>@depot.Name</td>
+                        <td>@depot.DrugTypeName</td>
+                        <td>@depot.DrugUnitId</td>
+                        <td>@depot.PickNumber</td>
+                        <td>@depot.CountryName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

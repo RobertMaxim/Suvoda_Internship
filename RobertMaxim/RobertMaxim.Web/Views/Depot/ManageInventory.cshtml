@@ -1,0 +1,46 @@
+﻿@model List<RobertMaxim.DataModel.Depot>
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="manager-form">
+        <form method="post">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </div>
+            }
+            <div class="form-group">
+                <label for="Start Pick Number">Start Pick Number (0-200)</label>
+                <input type="number" class="form-control" id="start-pick-number" name="StartPickNumber" min="0" max="200" required>
+            </div>
+            <div class="form-group">
+                <label for="End Pick Number">End Pick Number (0-200)</label>
+                <input type="number" class="form-control" id="end-pick-number" name="EndPickNumber" min="0" max="200" required>
+            </div>
+            <div class="form-group">
+                <label for="depotName">Select Depot (Irrelevant for disassociation)</label>
+                <select class="form-control" id="depotName" name="DepotName">
+                    @foreach (var depot in @Model)
+                    {
+                        <option value="@depot.Name">@depot.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="assoc-buttons">
+                <button type="submit" class="btn btn-primary" name="action" value="associate" formaction="/Depot/AssociateDrugs">Associate</button>
+                <button type="submit" class="btn btn-primary" name="action" value="disassociate" formaction="/Depot/DisassociateDrugs">Disassociate</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

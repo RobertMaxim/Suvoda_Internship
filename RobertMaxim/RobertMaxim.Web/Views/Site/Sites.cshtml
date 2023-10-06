@@ -1,0 +1,35 @@
+﻿@model List<RobertMaxim.Web.Models.SiteViewModel>
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="depots-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Site ID</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Site.Id</td>
+                        <td>@item.CountryName</td>
+                        <td>
+                            @Html.ActionLink("Request drugs", "RequestIndex", "Site", item.Site, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

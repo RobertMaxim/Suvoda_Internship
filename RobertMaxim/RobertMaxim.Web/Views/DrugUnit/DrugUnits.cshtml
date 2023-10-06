@@ -1,0 +1,39 @@
+﻿@model Dictionary<string, List<RobertMaxim.DataModel.DrugUnit>>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="drug-unit-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Drug Type</th>
+                    <th>Drug ID</th>
+                    <th>Pick Number</th>
+                    <th>Depot Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var key in Model.Keys)
+                {
+                    foreach (var value in Model[key])
+                    {
+                        <tr>
+                            <td>@key</td>
+                            <td>@value.Id</td>
+                            <td>@value.PickNumber</td>
+                            <td>@(value.Depot?.Name??"-")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
